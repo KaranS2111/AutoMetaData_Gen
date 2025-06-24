@@ -117,7 +117,8 @@ def extract_text_from_docx(docx_file):
 
 def extract_text_from_txt(txt_file):
     try:
-        return txt_file.read().decode('utf-8')
+        content = txt_file.read()
+        return content.decode("utf-8") if isinstance(content, bytes) else content
     except Exception as e:
         st.error(f"Error reading text file: {str(e)}")
         return ""
