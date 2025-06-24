@@ -263,6 +263,11 @@ if uploaded_file is not None:
         st.stop()
     
     st.success(f"✅ Extracted {len(text)} characters from document")
+    MAX_CHARS = 10000
+    full_text = text  # Keep full version for preview
+    if len(text) > MAX_CHARS:
+        st.warning(f"Text too long ({len(text)} chars). Using first {MAX_CHARS} characters for metadata.")
+        text = full_text[:MAX_CHARS]
     
 
     with st.expander("📖 Document Preview"):
