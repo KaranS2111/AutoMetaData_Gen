@@ -19,11 +19,18 @@ import subprocess
 import importlib.util
 
 
+
+if importlib.util.find_spec("spacy") is None:
+    subprocess.run(["pip", "install", "spacy"])
+
+import spacy
+
+
 if importlib.util.find_spec("en_core_web_sm") is None:
     subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
 
-nlp = spacy.load("en_core_web_sm")
 
+nlp = spacy.load("en_core_web_sm")
 st.set_page_config(
     page_title="Automated Metadata Generator", 
     page_icon="📄", 
