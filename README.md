@@ -56,6 +56,14 @@ streamlit run app.py
 - **DOCX** - Microsoft Word documents  
 - **TXT** - Plain text files
 
+## 🔄 Pipeline
+
+- **Document Upload** - User uploads PDF/DOCX/TXT file via Streamlit interface
+- **Text Extraction** - PyMuPDF extracts text, falls back to OCR for scanned documents
+- **AI Processing** - Groq's Llama 3.1 generates summaries and identifies topics
+- **Feature Extraction** - spaCy + scikit-learn extract keywords, entities, and statistics
+- **JSON Export** - Complete metadata packaged and downloaded as structured JSON
+
 ## 🧠 AI Processing
 
 - **Model**: Llama 3.1 8B Instant via Groq
