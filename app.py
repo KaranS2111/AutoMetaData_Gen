@@ -19,7 +19,7 @@ import subprocess
 import importlib.util
 
 
-nlp = spacy.load("en_core_web_sm")
+# nlp = spacy.load("en_core_web_sm")
 st.set_page_config(
     page_title="Automated Metadata Generator", 
     page_icon="📄", 
@@ -117,6 +117,7 @@ def extract_text_from_docx(docx_file):
 
 def extract_text_from_txt(txt_file):
     try:
+        txt_file.seek(0)
         content = txt_file.read()
         return content.decode("utf-8") if isinstance(content, bytes) else content
     except Exception as e:
