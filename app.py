@@ -15,6 +15,14 @@ import spacy
 import fitz  # PyMuPDF
 from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
+import subprocess
+
+
+try:
+    nlp = spacy.load("en_core_web_sm")
+except:
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
 
 st.set_page_config(
     page_title="Automated Metadata Generator", 
