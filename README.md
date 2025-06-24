@@ -19,6 +19,7 @@
 ## 🚀 Live Demo
 
 **Try it now:** [autometadatagen.streamlit.app](https://autometadatagen.streamlit.app/)
+**Video Demo:** 
 
 ## 🛠️ Quick Start
 
