@@ -117,12 +117,16 @@ def extract_text_from_docx(docx_file):
 
 def extract_text_from_txt(txt_file):
     try:
-        txt_file.seek(0)
-        content = txt_file.read()
-        return content.decode("utf-8") if isinstance(content, bytes) else content
+        raw = txt_file.read()
+        for encoding in ['utf-8', 'latin-1', 'utf-16']:
+            try:
+                return raw.decode(encoding)
+            except UnicodeDecodeError:
+                continue
+        st.error("Could not decode .txt file. Unsupported encoding.")
     except Exception as e:
-        st.error(f"Error reading text file: {str(e)}")
-        return ""
+        st.error(f"Error reading .txt file: {e}")
+    return ""
 
 
 def extract_keywords(text, max_keywords=15):
